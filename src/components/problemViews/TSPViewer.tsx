@@ -31,11 +31,13 @@ export const TSPViewer: React.FC<TSPViewerProps> = ({
     canvas.height = height * dpr
     ctx.scale(dpr, dpr)
 
-    ctx.clearRect(0, 0, width, height)
+    // Pitch black background
+    ctx.fillStyle = '#000000'
+    ctx.fillRect(0, 0, width, height)
 
-    // Draw background grid
-    ctx.strokeStyle = '#1e293b'
-    ctx.lineWidth = 0.5
+    // Draw cyber grid
+    ctx.strokeStyle = 'rgba(0, 255, 102, 0.07)'
+    ctx.lineWidth = 0.8
     for (let x = 0; x < width; x += 30) {
       ctx.beginPath()
       ctx.moveTo(x, 0)
@@ -52,13 +54,13 @@ export const TSPViewer: React.FC<TSPViewerProps> = ({
     const cityMap = new Map<number, City>()
     cities.forEach(c => cityMap.set(c.id, c))
 
-    // Draw tour lines for best individual
+    // Draw tour lines for best individual with intense neon green glow
     if (bestIndividual && bestIndividual.genes.length >= 2) {
       ctx.beginPath()
-      ctx.strokeStyle = '#10b981'
+      ctx.strokeStyle = '#00ff66'
       ctx.lineWidth = 2.5
-      ctx.shadowColor = '#10b981'
-      ctx.shadowBlur = 8
+      ctx.shadowColor = '#00ff66'
+      ctx.shadowBlur = 14
 
       const genes = bestIndividual.genes
       for (let i = 0; i < genes.length; i++) {
@@ -75,20 +77,30 @@ export const TSPViewer: React.FC<TSPViewerProps> = ({
 
     // Draw city nodes
     cities.forEach((c) => {
-      // Glow circle
+      // Outer neon glow
+      ctx.save()
+      ctx.shadowColor = '#00ff66'
+      ctx.shadowBlur = 10
       ctx.beginPath()
-      ctx.arc(c.x, c.y, 7, 0, 2 * Math.PI)
-      ctx.fillStyle = '#6366f1'
+      ctx.arc(c.x, c.y, 6.5, 0, 2 * Math.PI)
+      ctx.fillStyle = '#00ff66'
       ctx.fill()
-      ctx.strokeStyle = '#ffffff'
-      ctx.lineWidth = 2
-      ctx.stroke()
+      ctx.restore()
+
+      // Inner dark core with white point
+      ctx.beginPath()
+      ctx.arc(c.x, c.y, 3, 0, 2 * Math.PI)
+      ctx.fillStyle = '#ffffff'
+      ctx.fill()
 
       // City label
-      ctx.fillStyle = '#f8fafc'
-      ctx.font = 'bold 10px sans-serif'
+      ctx.fillStyle = '#e2e8f0'
+      ctx.font = 'bold 10px monospace'
       ctx.textAlign = 'center'
-      ctx.fillText(c.name, c.x, c.y - 11)
+      ctx.shadowColor = '#000000'
+      ctx.shadowBlur = 4
+      ctx.fillText(c.name, c.x, c.y - 10)
+      ctx.shadowBlur = 0
     })
   }, [cities, bestIndividual])
 
@@ -112,35 +124,39 @@ export const TSPViewer: React.FC<TSPViewerProps> = ({
   const tourDist = bestIndividual?.metadata?.distance || 0
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 shadow-lg flex flex-col justify-between">
-      <div className="flex flex-wrap items-center justify-between border-b border-slate-800 pb-2 mb-2 gap-2">
+    <div className="bg-[#030504] border border-emerald-500/30 rounded-2xl p-4 shadow-[0_0_25px_rgba(0,255,102,0.08)] flex flex-col justify-between">
+      <div className="flex flex-wrap items-center justify-between border-b border-emerald-950/80 pb-3 mb-3 gap-2">
         <div className="flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-emerald-400" />
-          <h3 className="text-xs font-bold text-slate-200 tracking-wider uppercase">
-            TSP Interactive Tour Canvas
-          </h3>
-          <span className="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">
-            Click canvas to add city
-          </span>
+          <div className="p-1.5 rounded-lg bg-emerald-950/80 text-[#00ff66] border border-emerald-500/30 shadow-[0_0_10px_rgba(0,255,102,0.2)]">
+            <MapPin className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-xs font-bold text-white tracking-wider uppercase flex items-center gap-2">
+              TSP Interactive Tour Canvas
+            </h3>
+            <span className="text-[10px] text-emerald-400 font-mono">
+              Order Crossover (OX1) Optimization
+            </span>
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold text-emerald-400">
+          <span className="text-xs font-mono font-bold text-[#00ff66] bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-500/30 shadow-[0_0_10px_rgba(0,255,102,0.15)]">
             Tour: {tourDist} px
           </span>
           <select
             onChange={(e) => onSelectPreset(e.target.value)}
-            className="bg-slate-800 text-slate-300 text-xs rounded px-2 py-1 border border-slate-700 focus:outline-none"
+            className="bg-black text-[#00ff66] text-xs font-mono rounded-lg px-2.5 py-1 border border-emerald-500/40 focus:outline-none focus:border-[#00ff66] cursor-pointer"
             defaultValue="circular12"
           >
-            <option value="circular12">Preset: Circular 12</option>
-            <option value="usCities10">Preset: US Cities 10</option>
-            <option value="random14">Preset: Random 14</option>
+            <option value="circular12" className="bg-black text-[#00ff66]">Preset: Circular 12</option>
+            <option value="usCities10" className="bg-black text-[#00ff66]">Preset: US Cities 10</option>
+            <option value="random14" className="bg-black text-[#00ff66]">Preset: Random 14</option>
           </select>
         </div>
       </div>
 
-      <div className="relative mx-auto border border-slate-800 rounded-lg overflow-hidden bg-slate-950 cursor-crosshair">
+      <div className="relative mx-auto border border-emerald-500/30 rounded-xl overflow-hidden bg-black cursor-crosshair shadow-[0_0_20px_rgba(0,255,102,0.06)]">
         <canvas
           ref={canvasRef}
           onClick={handleCanvasClick}
@@ -149,9 +165,9 @@ export const TSPViewer: React.FC<TSPViewerProps> = ({
         />
       </div>
 
-      <div className="flex items-center justify-between text-[11px] text-slate-400 pt-2 border-t border-slate-800/80">
-        <span>Click anywhere on the map to add cities dynamically!</span>
-        <span className="font-mono text-cyan-300 font-bold">{cities.length} Cities</span>
+      <div className="flex items-center justify-between text-[11px] text-slate-400 pt-3 border-t border-emerald-950/80 mt-3 font-mono">
+        <span className="text-emerald-400/80">✦ Click anywhere on the map to add cities dynamically!</span>
+        <span className="text-[#00ff66] font-bold">{cities.length} Cities</span>
       </div>
     </div>
   )

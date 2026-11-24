@@ -7,17 +7,17 @@ interface RouletteWheelCanvasProps {
   isSpinning?: boolean
 }
 
-const PALETTE = [
-  '#6366f1', // Indigo
-  '#06b6d4', // Cyan
-  '#ec4899', // Pink
-  '#f59e0b', // Amber
+const NEON_PALETTE = [
+  '#00ff66', // Pure Neon Green
   '#10b981', // Emerald
-  '#8b5cf6', // Violet
-  '#f43f5e', // Rose
-  '#3b82f6', // Blue
+  '#4ade80', // Light Lime
+  '#22c55e', // Vibrant Green
+  '#a3e635', // Electric Lime
+  '#06b6d4', // Cyan Green
   '#14b8a6', // Teal
-  '#eab308', // Yellow
+  '#84cc16', // Cyber Lime
+  '#34d399', // Mint
+  '#2dd4bf', // Light Teal
 ]
 
 export const RouletteWheelCanvas: React.FC<RouletteWheelCanvasProps> = ({
@@ -47,12 +47,11 @@ export const RouletteWheelCanvas: React.FC<RouletteWheelCanvasProps> = ({
 
     const totalFitness = population.reduce((sum, c) => sum + c.fitness, 0)
     if (totalFitness <= 0 || population.length === 0) {
-      // Draw placeholder circle
       ctx.beginPath()
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI)
-      ctx.fillStyle = '#1e293b'
+      ctx.fillStyle = '#050a06'
       ctx.fill()
-      ctx.strokeStyle = '#334155'
+      ctx.strokeStyle = 'rgba(0, 255, 102, 0.25)'
       ctx.lineWidth = 2
       ctx.stroke()
       return
@@ -70,14 +69,14 @@ export const RouletteWheelCanvas: React.FC<RouletteWheelCanvasProps> = ({
       ctx.closePath()
 
       const isSelected = chr.id === selectedChromosomeId
-      ctx.fillStyle = isSelected ? '#fbbf24' : PALETTE[idx % PALETTE.length]
+      ctx.fillStyle = isSelected ? '#ffffff' : NEON_PALETTE[idx % NEON_PALETTE.length]
       ctx.fill()
-      ctx.strokeStyle = '#0f172a'
-      ctx.lineWidth = 2
+      ctx.strokeStyle = '#000000'
+      ctx.lineWidth = 2.5
       ctx.stroke()
 
-      // Draw label if slice is large enough (> 12 degrees)
-      if (sliceAngle > 0.2) {
+      // Draw label if slice is large enough
+      if (sliceAngle > 0.22) {
         const midAngle = startAngle + sliceAngle / 2
         const labelRadius = radius * 0.68
         const lx = centerX + Math.cos(midAngle) * labelRadius
@@ -86,8 +85,8 @@ export const RouletteWheelCanvas: React.FC<RouletteWheelCanvasProps> = ({
         ctx.save()
         ctx.translate(lx, ly)
         ctx.rotate(midAngle + Math.PI / 2)
-        ctx.fillStyle = '#ffffff'
-        ctx.font = 'bold 9px monospace'
+        ctx.fillStyle = '#000000'
+        ctx.font = 'bold 10px monospace'
         ctx.textAlign = 'center'
         ctx.fillText(`#${idx + 1}`, 0, 0)
         ctx.restore()
@@ -96,46 +95,56 @@ export const RouletteWheelCanvas: React.FC<RouletteWheelCanvasProps> = ({
       startAngle = endAngle
     })
 
-    // Draw center hub
+    // Draw center hub with neon rim
+    ctx.save()
     ctx.beginPath()
     ctx.arc(centerX, centerY, 24, 0, 2 * Math.PI)
-    ctx.fillStyle = '#090d16'
+    ctx.fillStyle = '#000000'
+    ctx.shadowColor = '#00ff66'
+    ctx.shadowBlur = 12
     ctx.fill()
-    ctx.strokeStyle = '#4f46e5'
+    ctx.strokeStyle = '#00ff66'
     ctx.lineWidth = 3
     ctx.stroke()
+    ctx.restore()
 
     // Draw pointer needle at top (12 o'clock position)
+    ctx.save()
     ctx.beginPath()
     ctx.moveTo(centerX - 8, 4)
     ctx.lineTo(centerX + 8, 4)
     ctx.lineTo(centerX, 20)
     ctx.closePath()
-    ctx.fillStyle = '#f43f5e'
+    ctx.fillStyle = '#00ff66'
+    ctx.shadowColor = '#00ff66'
+    ctx.shadowBlur = 10
     ctx.fill()
     ctx.strokeStyle = '#ffffff'
     ctx.lineWidth = 1.5
     ctx.stroke()
+    ctx.restore()
   }, [population, selectedChromosomeId])
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col items-center justify-between shadow-lg h-full">
-      <div className="w-full flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
+    <div className="bg-[#030504] border border-emerald-500/30 rounded-2xl p-3 flex flex-col items-center justify-between shadow-[0_0_25px_rgba(0,255,102,0.08)] h-full font-mono">
+      <div className="w-full flex items-center justify-between border-b border-emerald-500/20 pb-2 mb-2">
         <h3 className="text-xs font-bold text-slate-200 tracking-wider uppercase">
           Roulette Wheel Selection
         </h3>
-        <span className="text-[10px] text-cyan-400 font-mono">p_i = f_i / Σf</span>
+        <span className="text-[10px] text-[#00ff66] font-bold drop-shadow-[0_0_5px_rgba(0,255,102,0.6)]">
+          p_i = f_i / Σf
+        </span>
       </div>
 
-      <div className="relative my-auto flex items-center justify-center">
+      <div className="relative my-auto flex items-center justify-center p-2 rounded-2xl bg-black border border-emerald-500/30 shadow-[inset_0_0_20px_rgba(0,255,102,0.1)]">
         <canvas
           ref={canvasRef}
           style={{ width: 260, height: 260 }}
-          className="rounded-full shadow-inner"
+          className="rounded-full shadow-[0_0_20px_rgba(0,255,102,0.15)]"
         />
       </div>
 
-      <div className="w-full text-center text-[11px] text-slate-400 pt-2 border-t border-slate-800/80">
+      <div className="w-full text-center text-[11px] text-emerald-500/80 pt-2 border-t border-emerald-500/20">
         Wedge angle is directly proportional to fitness.
       </div>
     </div>

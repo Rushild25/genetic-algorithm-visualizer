@@ -26,31 +26,37 @@ export const Navbar: React.FC<NavbarProps> = ({
   onToggleTextbookView
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-2.5">
+    <header className="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-emerald-500/25 px-4 py-2.5 shadow-[0_4px_25px_rgba(0,255,102,0.08)]">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-indigo-500/20 text-white font-bold">
+          <div className="w-10 h-10 rounded-xl bg-[#00ff66] flex items-center justify-center shadow-[0_0_20px_rgba(0,255,102,0.6)] text-black font-black">
             <Dna className="w-6 h-6 animate-pulse" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-xl font-black tracking-tight text-white">EvoAlgo</h1>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-semibold border border-indigo-500/30">
-                Genetic Algorithm Studio
+              <h1 className="text-xl font-black tracking-tight text-white flex items-center">
+                Evo<span className="text-[#00ff66] drop-shadow-[0_0_8px_rgba(0,255,102,0.8)]">Algo</span>
+              </h1>
+              <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-950/90 text-[#00ff66] font-mono font-bold border border-emerald-500/40 shadow-[0_0_10px_rgba(0,255,102,0.2)]">
+                v2.0 • Cyber Lab
               </span>
             </div>
-            <p className="text-xs text-slate-400">Interactive Pedagogical Optimization Visualizer</p>
+            <p className="text-xs text-emerald-400/70 font-mono tracking-tight">
+              Interactive Genetic Algorithm Studio
+            </p>
           </div>
         </div>
 
         {/* Problem Selector Dropdown */}
         <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider hidden sm:inline">Problem:</span>
+          <span className="text-xs font-mono uppercase tracking-wider text-emerald-500/80 hidden sm:inline">
+            Problem:
+          </span>
           <select
             value={currentProblem}
             onChange={(e) => onSelectProblem(e.target.value as ProblemType)}
-            className="bg-slate-800 text-slate-200 text-sm font-medium border border-slate-700 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer hover:bg-slate-750"
+            className="bg-black text-[#00ff66] text-xs sm:text-sm font-mono font-bold border border-emerald-500/40 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 shadow-[0_0_12px_rgba(0,255,102,0.15)] transition-all cursor-pointer hover:border-emerald-400 hover:shadow-[0_0_18px_rgba(0,255,102,0.25)]"
           >
             <option value="goldberg">📘 Goldberg Benchmark [f(x) = x² Textbook]</option>
             <option value="tsp">🗺️ Travelling Salesperson Problem (TSP)</option>
@@ -65,10 +71,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Textbook Verification Mode Toggle */}
           <button
             onClick={onToggleTextbookView}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold border transition-all cursor-pointer ${
               showTextbookView
-                ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20'
-                : 'bg-slate-800 text-amber-300 border-amber-500/40 hover:bg-slate-750'
+                ? 'bg-[#00ff66] text-black border-[#00ff66] shadow-[0_0_20px_rgba(0,255,102,0.8)]'
+                : 'bg-black text-[#00ff66] border-emerald-500/40 hover:bg-emerald-950/40 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(0,255,102,0.3)]'
             }`}
             title="Goldberg 1989 Table 1.1 & 1.2 Verification"
           >
@@ -79,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Quiz Button */}
           <button
             onClick={onOpenQuiz}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-indigo-300 border border-indigo-500/30 hover:bg-slate-750 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-black text-[#00ff66] border border-emerald-500/40 hover:bg-emerald-950/40 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(0,255,102,0.25)] transition-all cursor-pointer"
             title="Interactive Knowledge Check Quiz"
           >
             <Award className="w-3.5 h-3.5" />
@@ -89,20 +95,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Tutorial Guide */}
           <button
             onClick={onOpenTutorial}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-750 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono font-medium bg-black text-slate-300 border border-emerald-500/30 hover:border-emerald-400 hover:text-[#00ff66] hover:shadow-[0_0_12px_rgba(0,255,102,0.2)] transition-all cursor-pointer"
             title="Guide & Pedagogical Concepts"
           >
-            <HelpCircle className="w-3.5 h-3.5" />
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
             <span className="hidden sm:inline">Guide</span>
           </button>
 
           {/* Sound Toggle */}
           <button
             onClick={onToggleSound}
-            className={`p-2 rounded-lg text-xs border transition-all cursor-pointer ${
+            className={`p-2 rounded-xl text-xs border transition-all cursor-pointer ${
               soundEnabled
-                ? 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40'
-                : 'bg-slate-800 text-slate-400 border-slate-700 hover:text-slate-200'
+                ? 'bg-emerald-950/80 text-[#00ff66] border-emerald-400 shadow-[0_0_15px_rgba(0,255,102,0.3)]'
+                : 'bg-black text-slate-400 border-emerald-500/25 hover:border-emerald-400 hover:text-[#00ff66]'
             }`}
             title={soundEnabled ? 'Mute Audio' : 'Enable Audio Synthesizer'}
           >
@@ -112,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Reset */}
           <button
             onClick={onReset}
-            className="p-2 rounded-lg text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-750 transition-all hover:text-rose-400 cursor-pointer"
+            className="p-2 rounded-xl text-xs bg-black text-slate-400 border border-emerald-500/25 hover:border-rose-500 hover:text-rose-400 hover:shadow-[0_0_15px_rgba(244,63,94,0.3)] transition-all cursor-pointer"
             title="Reset Simulation"
           >
             <RotateCcw className="w-4 h-4" />
@@ -123,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="https://github.com/Rushild25/genetic-algorithm-visualizer"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-lg text-xs bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-750 transition-all hover:text-white"
+            className="p-2 rounded-xl text-xs bg-black text-slate-300 border border-emerald-500/25 hover:border-emerald-400 hover:text-[#00ff66] hover:shadow-[0_0_15px_rgba(0,255,102,0.25)] transition-all"
             title="View Source on GitHub"
           >
             <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

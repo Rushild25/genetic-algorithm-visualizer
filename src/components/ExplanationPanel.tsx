@@ -16,36 +16,38 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
   mathHighlight
 }) => {
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg flex flex-col justify-between">
+    <div className="bg-[#030504] border border-emerald-500/30 rounded-2xl p-4 shadow-[0_0_25px_rgba(0,255,102,0.08)] flex flex-col justify-between">
       <div>
         <div className="flex items-center gap-2 mb-2">
-          <div className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400">
+          <div className="p-1.5 rounded-xl bg-emerald-950/80 text-[#00ff66] border border-emerald-500/40 shadow-[0_0_10px_rgba(0,255,102,0.3)]">
             <Info className="w-4 h-4" />
           </div>
-          <h2 className="text-sm font-bold text-white tracking-wide">{title}</h2>
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 ml-auto">
-            Phase: {phase}
+          <h2 className="text-sm font-bold text-white tracking-wide font-mono flex items-center gap-2">
+            <span>{title}</span>
+          </h2>
+          <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-black text-[#00ff66] border border-emerald-500/40 shadow-[0_0_8px_rgba(0,255,102,0.2)] ml-auto">
+            PHASE: {phase}
           </span>
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
+        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3 font-sans">
           {body}
         </p>
 
         {mathHighlight && (
-          <div className="bg-slate-950 border border-indigo-500/30 rounded-lg p-2.5 mb-2">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-400 block mb-0.5">
+          <div className="bg-black border border-emerald-500/40 rounded-xl p-3 mb-2 shadow-[0_0_15px_rgba(0,255,102,0.1)]">
+            <span className="text-[10px] uppercase font-mono font-bold tracking-wider text-emerald-400/80 block mb-1">
               Mathematical Relation
             </span>
-            <code className="text-xs font-mono text-cyan-300 font-semibold break-words">
+            <code className="text-xs font-mono text-[#00ff66] font-bold break-words drop-shadow-[0_0_6px_rgba(0,255,102,0.6)]">
               {mathHighlight}
             </code>
           </div>
         )}
       </div>
 
-      <div className="pt-2 border-t border-slate-800/80 flex items-start gap-2 text-xs text-amber-300/90 font-medium">
-        <Lightbulb className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+      <div className="pt-2.5 border-t border-emerald-500/20 flex items-start gap-2 text-xs text-[#00ff66]/90 font-mono font-medium">
+        <Lightbulb className="w-3.5 h-3.5 text-[#00ff66] shrink-0 mt-0.5 drop-shadow-[0_0_6px_rgba(0,255,102,0.8)]" />
         <span>
           {phase === 'EVALUATE' && 'Higher fitness yields larger selection wedges, driving reproductive priority.'}
           {phase === 'SELECT' && 'Selection exerts evolutionary pressure toward fitter schema building blocks.'}

@@ -281,7 +281,7 @@ export const App: React.FC = () => {
   const bestIndividual = latestStats?.bestIndividual || snapshot.population[0] || null
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen bg-black text-slate-100 flex flex-col font-sans selection:bg-[#00ff66] selection:text-black cyber-grid">
       {/* Top Navigation */}
       <Navbar
         currentProblem={currentProblem}
@@ -325,52 +325,52 @@ export const App: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               <div className="lg:col-span-2">
                 {currentProblem === 'goldberg' && (
-                  <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-lg flex flex-col justify-between">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                  <div className="bg-[#030504] border border-emerald-500/30 rounded-2xl p-4 shadow-[0_0_25px_rgba(0,255,102,0.08)] flex flex-col justify-between">
+                    <div className="flex items-center justify-between border-b border-emerald-950/80 pb-3 mb-3">
                       <div>
-                        <h3 className="text-xs font-bold text-slate-200 tracking-wider uppercase">
+                        <h3 className="text-xs font-bold text-white tracking-wider uppercase">
                           Goldberg 1989 Textbook Benchmark: f(x) = x² on [0, 31]
                         </h3>
-                        <p className="text-[11px] text-slate-400">
+                        <p className="text-[11px] text-emerald-400 font-mono">
                           5-bit chromosome representation with exact analytical verification
                         </p>
                       </div>
-                      <span className="text-xs font-mono font-bold text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
+                      <span className="text-xs font-mono font-bold text-[#00ff66] px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-500/30 shadow-[0_0_10px_rgba(0,255,102,0.2)]">
                         Max Possible: f(31) = 961
                       </span>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-auto">
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                      <div className="p-3.5 rounded-xl bg-black border border-emerald-500/20 shadow-[inset_0_0_15px_rgba(0,255,102,0.03)]">
                         <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                           Current Best Solution
                         </span>
-                        <div className="text-xs font-mono text-indigo-300 font-bold mb-1">
+                        <div className="text-xs font-mono text-[#00ff66] font-bold mb-1">
                           String: {bestIndividual?.genes.join('')}
                         </div>
-                        <div className="text-lg font-black font-mono text-amber-400">
+                        <div className="text-lg font-black font-mono text-[#00ff66]">
                           {bestIndividual?.phenotypeDisplay}
                         </div>
                       </div>
 
-                      <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
+                      <div className="p-3.5 rounded-xl bg-black border border-emerald-500/20 shadow-[inset_0_0_15px_rgba(0,255,102,0.03)]">
                         <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">
                           Goldberg Table 1.1 Baseline
                         </span>
                         <div className="text-xs font-mono text-slate-300 mb-1">
-                          Initial Pop: <code className="text-cyan-300">01101, 11000, 01000, 10011</code>
+                          Initial Pop: <code className="text-[#00ff66]">01101, 11000, 01000, 10011</code>
                         </div>
-                        <div className="text-xs text-emerald-400 font-mono font-bold">
+                        <div className="text-xs text-[#00ff66] font-mono font-bold">
                           Gen 0 Avg = 292.5 → Gen 1 Avg = 438.5 (+49.9%)
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-[11px] text-slate-400 pt-2 border-t border-slate-800/80 mt-3 flex items-center justify-between">
+                    <div className="text-[11px] text-slate-400 pt-3 border-t border-emerald-950/80 mt-3 flex items-center justify-between font-mono">
                       <span>Click 'Textbook Audit' in the header to inspect the complete chapter proof!</span>
                       <button
                         onClick={() => setShowTextbookView(true)}
-                        className="text-xs text-amber-400 hover:underline font-semibold"
+                        className="text-xs text-[#00ff66] hover:underline font-bold cursor-pointer"
                       >
                         Open Table 1.1 & 1.2 →
                       </button>
@@ -430,7 +430,6 @@ export const App: React.FC = () => {
                   offspring={snapshot.offspring}
                   matingPool={snapshot.matingPool}
                   activeLocus={snapshot.activeCrossoverLocus}
-                  problemType={currentProblem}
                 />
               </div>
 
@@ -485,12 +484,12 @@ export const App: React.FC = () => {
       <TutorialModal isOpen={showTutorialModal} onClose={() => setShowTutorialModal(false)} />
 
       {/* Footer */}
-      <footer className="mt-8 border-t border-slate-800/80 bg-slate-950 py-4 px-4 text-center text-xs text-slate-500">
+      <footer className="mt-8 border-t border-emerald-950/80 bg-black py-4 px-4 text-center text-xs text-slate-500 font-mono">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-400">EvoAlgo</span>
+            <span className="font-bold text-[#00ff66]">EvoAlgo</span>
             <span>•</span>
-            <span>Interactive Genetic Algorithm Pedagogical Studio</span>
+            <span className="text-slate-400">Interactive Genetic Algorithm Pedagogical Studio</span>
           </div>
           <div className="text-slate-400">
             Inspired by{' '}
@@ -498,7 +497,7 @@ export const App: React.FC = () => {
               href="https://visualgo.net/en/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-indigo-400 hover:underline font-semibold"
+              className="text-[#00ff66] hover:underline font-bold"
             >
               VisuAlgo.net
             </a>{' '}

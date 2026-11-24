@@ -20,20 +20,24 @@ export const KnapsackViewer: React.FC<KnapsackViewerProps> = ({
   const capacityPercent = Math.min(100, Math.round((currentWeight / maxCapacity) * 100))
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 shadow-lg flex flex-col justify-between">
-      <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+    <div className="bg-[#030504] border border-emerald-500/30 rounded-2xl p-4 shadow-[0_0_25px_rgba(0,255,102,0.08)] flex flex-col justify-between">
+      <div className="flex items-center justify-between border-b border-emerald-950/80 pb-3 mb-3">
         <div className="flex items-center gap-2">
-          <Package className="w-4 h-4 text-amber-400" />
-          <h3 className="text-xs font-bold text-slate-200 tracking-wider uppercase">
+          <div className="p-1.5 rounded-lg bg-emerald-950/80 text-[#00ff66] border border-emerald-500/30 shadow-[0_0_10px_rgba(0,255,102,0.2)]">
+            <Package className="w-4 h-4" />
+          </div>
+          <h3 className="text-xs font-bold text-white tracking-wider uppercase">
             0/1 Knapsack Packing Manifest
           </h3>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold text-amber-300">
+          <span className="text-xs font-mono font-bold text-[#00ff66] bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-500/30 shadow-[0_0_10px_rgba(0,255,102,0.15)]">
             Value: \${currentValue}
           </span>
-          <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full ${
-            isFeasible ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+          <span className={`text-xs font-mono font-bold px-2.5 py-1 rounded-lg ${
+            isFeasible
+              ? 'bg-emerald-950/90 text-[#00ff66] border border-emerald-400 shadow-[0_0_10px_rgba(0,255,102,0.2)]'
+              : 'bg-rose-950/80 text-rose-300 border border-rose-500/50 shadow-[0_0_10px_rgba(244,63,94,0.3)]'
           }`}>
             {currentWeight} / {maxCapacity} kg
           </span>
@@ -41,18 +45,18 @@ export const KnapsackViewer: React.FC<KnapsackViewerProps> = ({
       </div>
 
       {/* Capacity Progress Bar */}
-      <div className="mb-3">
-        <div className="flex justify-between text-[11px] mb-1 font-mono">
+      <div className="mb-4">
+        <div className="flex justify-between text-[11px] mb-1.5 font-mono">
           <span className="text-slate-400">Backpack Capacity:</span>
-          <span className={isFeasible ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold flex items-center gap-1'}>
+          <span className={isFeasible ? 'text-[#00ff66] font-bold' : 'text-rose-400 font-bold flex items-center gap-1'}>
             {!isFeasible && <AlertTriangle className="w-3 h-3" />}
             {capacityPercent}% {isFeasible ? 'Filled' : 'OVERLOADED'}
           </span>
         </div>
-        <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+        <div className="w-full h-2.5 bg-black rounded-full overflow-hidden border border-emerald-500/30">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              isFeasible ? 'bg-gradient-to-r from-emerald-500 to-cyan-400' : 'bg-rose-500'
+              isFeasible ? 'bg-[#00ff66] shadow-[0_0_12px_rgba(0,255,102,0.8)]' : 'bg-rose-500 shadow-[0_0_12px_rgba(244,63,94,0.8)]'
             }`}
             style={{ width: `${capacityPercent}%` }}
           />
@@ -67,22 +71,22 @@ export const KnapsackViewer: React.FC<KnapsackViewerProps> = ({
           return (
             <div
               key={item.id}
-              className={`p-2 rounded-xl border flex flex-col items-center text-center transition-all ${
+              className={`p-2.5 rounded-xl border flex flex-col items-center text-center transition-all ${
                 isPacked
-                  ? 'bg-amber-500/15 border-amber-500/40 text-amber-200 shadow-md shadow-amber-500/10'
-                  : 'bg-slate-950/60 border-slate-800 text-slate-500 opacity-60'
+                  ? 'bg-emerald-950/70 border-emerald-400 text-[#00ff66] shadow-[0_0_15px_rgba(0,255,102,0.2)]'
+                  : 'bg-black/90 border-emerald-950/50 text-slate-500 opacity-50'
               }`}
             >
               <div className="text-2xl mb-1">{item.icon}</div>
-              <span className="text-xs font-bold leading-tight truncate w-full">{item.name}</span>
+              <span className="text-xs font-bold leading-tight truncate w-full text-slate-200">{item.name}</span>
               <div className="flex items-center gap-1 text-[10px] font-mono mt-0.5">
-                <span>{item.weight}kg</span>
-                <span>•</span>
-                <span className="text-amber-400">\${item.value}</span>
+                <span className="text-slate-400">{item.weight}kg</span>
+                <span className="text-emerald-500">•</span>
+                <span className="text-[#00ff66] font-bold">\${item.value}</span>
               </div>
-              <div className="mt-1">
+              <div className="mt-1.5">
                 {isPacked ? (
-                  <span className="text-[9px] font-bold text-emerald-400 flex items-center gap-0.5">
+                  <span className="text-[9px] font-bold text-[#00ff66] flex items-center gap-0.5">
                     <CheckCircle2 className="w-2.5 h-2.5" /> Packed
                   </span>
                 ) : (
@@ -94,7 +98,7 @@ export const KnapsackViewer: React.FC<KnapsackViewerProps> = ({
         })}
       </div>
 
-      <div className="text-[10px] text-slate-400 pt-2 border-t border-slate-800/80 mt-2">
+      <div className="text-[10px] text-slate-400 pt-3 border-t border-emerald-950/80 mt-3 font-mono">
         Genetic algorithm maximizes total packed dollar value while applying a harsh penalty if total weight exceeds {maxCapacity}kg.
       </div>
     </div>

@@ -2,9 +2,57 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen;
+    background-color: #000000;
+    color: #e2e8f0;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
     overflow-x: hidden;
   }
+
+  ::selection {
+    background-color: #00ff66;
+    color: #000000;
+  }
+}
+
+/* Neon glow helper utilities */
+.neon-glow-green {
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.4), 0 0 30px rgba(0, 255, 102, 0.15);
+}
+
+.neon-glow-green-lg {
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.6), 0 0 50px rgba(0, 255, 102, 0.25);
+}
+
+.neon-border-green {
+  border-color: rgba(0, 255, 102, 0.5);
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.25);
+}
+
+.neon-text-green {
+  color: #00ff66;
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+}
+
+.neon-card {
+  background-color: #050706;
+  border: 1px solid rgba(0, 255, 102, 0.18);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.9), 0 0 15px -3px rgba(0, 255, 102, 0.1);
+}
+
+.neon-card:hover {
+  border-color: rgba(0, 255, 102, 0.35);
+  box-shadow: 0 4px 25px -2px rgba(0, 0, 0, 0.9), 0 0 20px -2px rgba(0, 255, 102, 0.18);
+}
+
+/* Matrix grid scanline overlay (subtle) */
+.cyber-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 102, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
@@ -14,14 +62,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.5);
+  background: rgba(0, 255, 102, 0.4);
   border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.8);
+  background: rgba(0, 255, 102, 0.8);
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.8);
 }
