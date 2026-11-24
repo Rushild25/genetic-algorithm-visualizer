@@ -1,7 +1,7 @@
 # EvoAlgo: Interactive Genetic Algorithm Studio
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-success?style=for-the-badge&logo=github)](https://rushild25.github.io/genetic-algorithm-visualizer/)
-[![Demo Video](https://img.shields.io/badge/Demo_Video-3m_45s_MP4-indigo?style=for-the-badge&logo=youtube)](https://github.com/Rushild25/genetic-algorithm-visualizer/blob/main/demo_video.mp4)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Pending_Upload-lightgrey?style=for-the-badge&logo=youtube)](#-3-5-minute-demo-video-walkthrough)
 [![React 19](https://img.shields.io/badge/React-19.3-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
@@ -14,12 +14,12 @@
 ## 🌐 Live Public Link & Repository
 - **Interactive Web App (Deployed on GitHub Pages):** [https://rushild25.github.io/genetic-algorithm-visualizer/](https://rushild25.github.io/genetic-algorithm-visualizer/)
 - **GitHub Repository:** [https://github.com/Rushild25/genetic-algorithm-visualizer](https://github.com/Rushild25/genetic-algorithm-visualizer)
-- **Demo Video (3m 45s High-Definition Walkthrough):** [demo_video.mp4](https://github.com/Rushild25/genetic-algorithm-visualizer/blob/main/demo_video.mp4)
+- **Demo Video:** *(Pending upload)*
 
 ---
 
 ## 🎥 3-5 Minute Demo Video Walkthrough
-The repository includes a 3-minute 45-second high-definition narrated video ([`demo_video.mp4`](demo_video.mp4)) showcasing every system capability.
+*(Demo video link and player will be added here upon upload)*
 
 | Timestamp | Topic / Feature Demonstrated | Description |
 |---|---|---|
