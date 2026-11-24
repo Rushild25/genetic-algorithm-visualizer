@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dna, BookOpen, HelpCircle, Volume2, VolumeX, RotateCcw, Award } from 'lucide-react'
+import { Dna, BookOpen, HelpCircle, Volume2, VolumeX, RotateCcw, Award, Video } from 'lucide-react'
 import type { ProblemType } from '../types'
 
 interface NavbarProps {
@@ -101,6 +101,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
             <span className="hidden sm:inline">Guide</span>
           </button>
+
+          {/* Demo Video Walkthrough */}
+          <a
+            href="https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold bg-emerald-950/80 text-[#00ff66] border border-emerald-500/40 hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(0,255,102,0.3)] transition-all cursor-pointer"
+            title="Watch 3-5 Minute Demo Video Walkthrough on Google Drive"
+          >
+            <Video className="w-3.5 h-3.5 text-[#00ff66]" />
+            <span className="hidden md:inline">Demo Video</span>
+          </a>
 
           {/* Sound Toggle */}
           <button

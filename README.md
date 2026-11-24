@@ -1,7 +1,7 @@
 # EvoAlgo: Interactive Genetic Algorithm Studio
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-success?style=for-the-badge&logo=github)](https://rushild25.github.io/genetic-algorithm-visualizer/)
-[![Demo Video](https://img.shields.io/badge/Demo_Video-Pending_Upload-lightgrey?style=for-the-badge&logo=youtube)](#-3-5-minute-demo-video-walkthrough)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Google_Drive-red?style=for-the-badge&logo=googledrive)](https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing)
 [![React 19](https://img.shields.io/badge/React-19.3-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
@@ -14,12 +14,17 @@
 ## 🌐 Live Public Link & Repository
 - **Interactive Web App (Deployed on GitHub Pages):** [https://rushild25.github.io/genetic-algorithm-visualizer/](https://rushild25.github.io/genetic-algorithm-visualizer/)
 - **GitHub Repository:** [https://github.com/Rushild25/genetic-algorithm-visualizer](https://github.com/Rushild25/genetic-algorithm-visualizer)
-- **Demo Video:** *(Pending upload)*
+- **Demo Video Walkthrough (Google Drive):** [https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing](https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing)
 
 ---
 
 ## 🎥 3-5 Minute Demo Video Walkthrough
-*(Demo video link and player will be added here upon upload)*
+
+A high-definition narrated walkthrough of EvoAlgo is available to stream or download on Google Drive:
+
+👉 **[Watch Demo Video on Google Drive](https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing)**
+
+[![Watch Demo Video on Google Drive](https://img.shields.io/badge/Google_Drive-Watch_Demo_Video-34a853?style=for-the-badge&logo=googledrive&logoColor=white)](https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing)
 
 | Timestamp | Topic / Feature Demonstrated | Description |
 |---|---|---|

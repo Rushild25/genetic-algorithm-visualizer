@@ -502,6 +502,15 @@ export const App: React.FC = () => {
               VisuAlgo.net
             </a>{' '}
             & Verified against David E. Goldberg (1989)
+            <span className="mx-2">•</span>
+            <a
+              href="https://drive.google.com/file/d/1zkIF-SmBye56OW1tr2mXBxnLcNtmywB2/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00ff66] hover:underline font-bold"
+            >
+              Demo Video Walkthrough ↗
+            </a>
           </div>
         </div>
       </footer>
